@@ -1,0 +1,175 @@
+{
+    "name": "excel-tools",
+    "version": "1.0.0",
+    "label": "Excel Tools",
+    "description": "Utility to manage excel files",
+    "publisher": "Naili.M",
+    "icon_small_name": "small.png",
+    "icon_large_name": "large.png",
+    "configuration": {
+    },
+    "operations": [
+        {
+            "title": "Read Sheet",
+            "description": "Read the sheet content by name and return all content as JSON",
+            "tooltip": "Read the sheet content by name and return all content as JSON",
+            "operation": "read_sheet",
+            "annotation": "read_sheet",
+            "parameters": [
+                {
+                    "title": "File IRI",
+                    "name": "file_iri",
+                    "description": "IRI of the excel file to read",
+                    "tooltip": "IRI of the excel file to read",
+                    "type": "text",
+                    "visible": true,
+                    "editable": true,
+                    "required": true
+                },
+                {
+                    "title": "Sheet Name",
+                    "name": "sheet_name",
+                    "description": "Name of the sheet to read",
+                    "tooltip": "Name of the sheet to read",
+                    "type": "text",
+                    "placeholder":"Sheet1",
+                    "visible": true,
+                    "editable": true,
+                    "required": true
+                },
+                {
+                    "title": "Use Column Title",
+                    "name": "use_column_title",
+                    "description": "Use the column title as a key for each cell value on that column instead of the cell coordinates. The sheet must have a title row on the top",
+                    "tooltip": "Use the column title as a key for each cell value on that column instead of the cell coordinates. The sheet must have a title row on the top",
+                    "type": "checkbox",
+                    "visible": true,
+                    "editable": true,
+                    "required": false,
+                    "value": false
+                }                
+            ],
+            "output_schema": "",
+            "enabled": true
+        },
+        {
+            "title": "Read Column By Name",
+            "description": "Read the column content by name",
+            "tooltip": "Read the column content by name",
+            "operation": "read_column_by_name",
+            "annotation": "read_column_by_name",
+            "parameters": [
+                {
+                    "title": "File IRI",
+                    "name": "file_iri",
+                    "description": "IRI of the excel file to edit",
+                    "tooltip": "IRI of the excel file to edit",
+                    "type": "text",
+                    "visible": true,
+                    "editable": true,
+                    "required": true
+                },
+                {
+                    "title": "Sheet Name",
+                    "name": "sheet_name",
+                    "description": "Name of the sheet to edit",
+                    "tooltip": "Name of the sheet to edit",
+                    "type": "text",
+                    "placeholder":"Sheet1",
+                    "visible": true,
+                    "editable": true,
+                    "required": true
+                },
+                {
+                    "title": "Column Name",
+                    "name": "column_name",
+                    "description": "Name of the column you want to read.",
+                    "tooltip": "Name of the column you want to read.",
+                    "type": "text",
+                    "visible": true,
+                    "editable": true,
+                    "required": true
+                }
+            ],
+            "output_schema": "",
+            "enabled": true
+        },
+        {
+            "title": "Update Cell",
+            "description": "Update the value of a cell",
+            "tooltip": "Update the value of a cell",
+            "operation": "update_cell",
+            "annotation": "update_cell",
+            "parameters": [
+                {
+                    "title": "File IRI",
+                    "name": "file_iri",
+                    "description": "IRI of the excel file to edit",
+                    "tooltip": "IRI of the excel file to edit",
+                    "type": "text",
+                    "visible": true,
+                    "editable": true,
+                    "required": true
+                },
+                {
+                    "title": "Sheet Name",
+                    "name": "sheet_name",
+                    "description": "Name of the sheet to edit",
+                    "tooltip": "Name of the sheet to edit",
+                    "type": "text",
+                    "placeholder":"Sheet1",
+                    "visible": true,
+                    "editable": true,
+                    "required": true
+                },
+                {
+                    "title": "Cell ID",
+                    "name": "cell_id",
+                    "description": "Cell to edit,exp: A1, B3...",
+                    "tooltip": "Cell to edit,exp: A1, B3...",
+                    "type": "text",
+                    "placeholder":"B3",
+                    "visible": true,
+                    "editable": true,
+                    "required": true
+                },
+                {
+                    "title": "Value",
+                    "name": "cell_value",
+                    "description": "Value to update the cell with",
+                    "tooltip": "Value to update the cell with",
+                    "type": "text",
+                    "visible": true,
+                    "editable": true,
+                    "required": true
+                }
+            ],
+            "output_schema": "",
+            "enabled": true
+        },
+        {
+         "title": "List Sheets",
+         "description": "Update the value of a cell",
+         "tooltip": "Update the value of a cell",
+         "operation": "list_sheets",
+         "annotation": "list_sheets",
+         "parameters": [
+             {
+                 "title": "File IRI",
+                 "name": "file_iri",
+                 "description": "IRI of the excel file",
+                 "tooltip": "IRI of the excel file",
+                 "type": "text",
+                 "visible": true,
+                 "editable": true,
+                 "required": true
+             }
+         ],
+         "output_schema": "",
+         "enabled": true
+     }        
+    ],
+    "category": "Enrichment",
+    "active": true,
+    "cs_compatible": true
+}
