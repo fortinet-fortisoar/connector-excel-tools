@@ -27,13 +27,6 @@ def get_file_from_fortisoar(file_iri):
         logger.exception('Could not download file: {} from FortiSOAR. {}'.format(file_iri, err))
         raise ConnectorError('Could not download file: {} from FortiSOAR. {}'.format(file_iri, err))
 
-def upload_file_to_fortisoar(workbook_dict, create_attachment=True):
-    workbook_dict['workbook'].workbook.save(filename=filename) #TODO figure out how to name the new file
-    attach_response = upload_file_to_cyops(file_path=file_path, filename=file_name,
-                                       name=file_name, create_attachment=create_attachment)
-    file_iri = attach_response['file']['@id'] if create_attachment else attach_response['@id']
-    return { "fileIRI": file_iri, "response": attach_response }
-
 
 def load_workbook(params):
     try:
@@ -60,3 +53,26 @@ def cleanup(workbook):
         os.remove(workbook['filePath'])
     except OSError as err:
         logger.warning('Couldnd not delete file: {0}. Error: {1}'.format(workbook['filePath'], err))
+
+
+def upload_file_to_fortisoar(workbook_dict, create_attachment=True):
+    try:
+        workbook = workbook_dict['workbook']
+        file_name = workbook_dict['fileName']
+        file_path = workbook_dict['filePath']
+        workbook.save(filename=file_path)
+        upload_response = upload_file_to_cyops(
+            file_path=file_path,
+            filename=file_name,
+            name=file_name,
+            create_attachment=create_attachment
+            )
+        file_iri = upload_response['file']['@id'] if create_attachment else upload_response['@id']
+
+        cleanup(workbook_dict)
+        return { "fileIRI": file_iri, "response": upload_response }
+
+    except Exception as err:
+        logger.warning('Couldnd upload file: {0} to FortiSOAR. Error: {1}'.format(file_path, err))
+        raise ConnectorError('Couldnd upload file: {0} to FortiSOAR. Error: {1}'.format(file_path, err))
+    

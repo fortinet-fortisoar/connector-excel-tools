@@ -80,7 +80,8 @@ def update_cell(config, params):
         workbook = load_workbook(params)
         sheet = workbook['sheet']        
         sheet[cell_id] = cell_value
-        #TODO upload new file to cyops
+        return upload_file_to_fortisoar(workbook)
+
     except Exception as err:
         logger.exception('Could not update cell: {}'.format(err))
         raise ConnectorError('Could not update cell: {}'.format(err))
