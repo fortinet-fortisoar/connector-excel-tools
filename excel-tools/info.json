@@ -149,8 +149,8 @@
         },
         {
          "title": "List Sheets",
-         "description": "Update the value of a cell",
-         "tooltip": "Update the value of a cell",
+         "description": "Lists available sheets names",
+         "tooltip": "Lists available sheets names",
          "operation": "list_sheets",
          "annotation": "list_sheets",
          "parameters": [
