@@ -87,6 +87,39 @@ def update_cell(config, params):
         raise ConnectorError('Could not update cell: {}'.format(err))
 
 
+def update_column(config, params):
+    try:
+        select_column_by = params.get('select_column')
+        coordinates_schema = {
+                "type": "object",
+                "propertyNames": {
+                    "pattern": "[A-Z]{1,2}\d+"
+                }
+        }
+        
+        workbook = load_workbook(params)
+        sheet = workbook['sheet']
+        
+        if select_column_by == 'Name':
+            cells = validate_json_schema(params.get('cells'), coordinates_schema)
+            for coordinate, value in cells.items():   
+                sheet[coordinate] = value
+            return upload_file_to_fortisoar(workbook)
+        
+        elif select_column_by == 'Position':
+            column_index = params.get('column_index')
+            first_row_index = params.get('first_row_index')
+            cells = parse_input_list(params.get('cells'))
+            for row, value in enumerate(cells, start=first_row_index):
+                sheet.cell(row=row, column=column_index).value = value
+            return upload_file_to_fortisoar(workbook)
+
+
+    except Exception as err:
+        logger.exception('Could not update column: {}'.format(err))
+        raise ConnectorError('Could not update column: {}'.format(err))
+    
+
 def check_health(config):
     try:
         import importlib.util

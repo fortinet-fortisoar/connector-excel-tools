@@ -95,6 +95,103 @@
             "enabled": true
         },
         {
+            "title": "Update Column",
+            "description": "Update cells values in a column",
+            "tooltip": "Update cells values in a column",
+            "operation": "update_column",
+            "annotation": "update_column",
+            "parameters": [
+                {
+                    "title": "File IRI",
+                    "name": "file_iri",
+                    "description": "IRI of the excel file to edit",
+                    "tooltip": "IRI of the excel file to edit",
+                    "type": "text",
+                    "visible": true,
+                    "editable": true,
+                    "required": true
+                },
+                {
+                    "title": "Sheet Name",
+                    "name": "sheet_name",
+                    "description": "Name of the sheet to edit",
+                    "tooltip": "Name of the sheet to edit",
+                    "type": "text",
+                    "placeholder":"Sheet1",
+                    "visible": true,
+                    "editable": true,
+                    "required": true
+                },
+                {
+                    "title": "Select Column By",
+                    "name": "select_column",
+                    "description": "Select column by name or position",
+                    "tooltip": "Select column by name or position",
+                    "type": "select",
+                    "options": [
+                      "Name",
+                      "Position"
+                    ],
+                    "value": "Name",
+                    "visible": true,
+                    "editable": true,
+                    "required": true,
+                    "onchange": {
+                      "Name": [
+                        {
+                          "title": "Cells Definitions",
+                          "name": "cells",
+                          "type": "json",
+                          "visible": true,
+                          "editable": true,
+                          "required": true,
+                          "description": "Cells definition JSON dictionary",
+                          "tooltip": "Cells definition JSON dictionary",
+                          "value": {"U1":"value1","U2":"value2","U3":"value3"}
+                        }
+                      ],
+                      "Position": [
+                        {
+                            "title": "Column Index",
+                            "name": "column_index",
+                            "description": "Index of the column to update",
+                            "tooltip": "Exp: If you want to update column B set this to 2",
+                            "type": "integer",
+                            "visible": true,
+                            "editable": true,
+                            "required": true,
+                            "placeholder": 4
+                        },
+                        {
+                            "title": "First Row Index",
+                            "name": "first_row_index",
+                            "description": "Index of the first row to update",
+                            "tooltip": "Exp: If you want to start from the 2nd row to skip the headers, set this to 2",
+                            "type": "integer",
+                            "visible": true,
+                            "editable": true,
+                            "required": true,
+                            "placeholder": 2
+                          },                        
+                        {
+                            "title": "Cells Values",
+                            "name": "cells",
+                            "type": "text",
+                            "visible": true,
+                            "editable": true,
+                            "required": true,
+                            "description": "CSV or list of the values to update the column with",
+                            "tooltip": "Exp: If you want to update cells B2 to B5 then use: [\"v2\",\"v3\",\"v4\",\"v5\"] or v2,v3,v4,v5",
+                            "placeholder": "[\"value2\",\"value3\",\"value4\",\"value5\"]"
+                          }                        
+                      ]
+                    }
+                }
+            ],
+            "output_schema": "",
+            "enabled": true
+        },        
+        {
             "title": "Update Cell",
             "description": "Update the value of a cell",
             "tooltip": "Update the value of a cell",

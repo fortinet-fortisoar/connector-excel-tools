@@ -1,5 +1,6 @@
 import openpyxl
 import os
+from jsonschema import validate
 from connectors.cyops_utilities.builtins import download_file_from_cyops, upload_file_to_cyops
 from django.conf import settings
 from connectors.core.connector import get_logger, ConnectorError
@@ -76,3 +77,18 @@ def upload_file_to_fortisoar(workbook_dict, create_attachment=True):
         logger.warning('Couldnd upload file: {0} to FortiSOAR. Error: {1}'.format(file_path, err))
         raise ConnectorError('Couldnd upload file: {0} to FortiSOAR. Error: {1}'.format(file_path, err))
     
+def validate_json_schema(_instance, _schema):
+    try:
+        validate(instance=_instance, schema=_schema)
+        return _instance
+    except Exception as err:
+        logger.error("Entered data: [{0}] does not match the schema:{1}. Error: {2}".format(_instance,_schema,err))
+        raise ConnectorError("Entered data: [{0}] does not match the schema:{1}. Error: {2}".format(_instance,_schema,err))
+    
+
+def parse_input_list(input_list):
+    if isinstance(input_list, str) and ',' in input_list:
+        input_list = input_list.replace(' ','')
+        return input_list.split(',')
+    elif isinstance(input_list, list):
+        return input_list
