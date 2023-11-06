@@ -1,0 +1,589 @@
+{
+  "type": "workflow_collections",
+  "data": [
+    {
+      "@type": "WorkflowCollection",
+      "name": "Sample - Excel Tools - 1.0.0",
+      "description": "Sample playbooks for \"Excel Tools\" connector. If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection, since the sample playbook collection gets deleted during connector upgrade and delete.",
+      "visible": true,
+      "uuid": "d555edd3-0728-473d-abd3-4a7836730242",
+      "id": 81,
+      "deletedAt": null,
+      "importedBy": [],
+      "recordTags": [],
+      "workflows": [
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Read Column By Name",
+          "aliasName": null,
+          "tag": null,
+          "description": "lists values from a column defined by name",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1695963270,
+          "collection": "/api/3/workflow_collections/d555edd3-0728-473d-abd3-4a7836730242",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/6c14c8df-0dd1-4dce-8dc3-93a6a6762751",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "675edd42-aa9a-4d25-be8f-568cead8ea92",
+                "resources": [
+                  "attachments",
+                  "files"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "displayConditions": {
+                  "files": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": []
+                  },
+                  "attachments": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": []
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": false,
+                "showToasterMessage": {
+                  "visible": false,
+                  "messageVisible": true
+                },
+                "singleRecordExecution": true
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "6c14c8df-0dd1-4dce-8dc3-93a6a6762751"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Read Column By Name",
+              "description": null,
+              "arguments": {
+                "name": "Excel Tools",
+                "params": {
+                  "file_iri": "{{vars.input.records[0].file['@id']}}",
+                  "sheet_name": "Sheet1",
+                  "column_name": "U"
+                },
+                "version": "1.0.0",
+                "connector": "excel-tools",
+                "operation": "read_column_by_name",
+                "operationTitle": "Read Column By Name",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "806ae8b8-974b-4b87-b1e4-f68da66a85a4"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> List Sheets",
+              "targetStep": "/api/3/workflow_steps/806ae8b8-974b-4b87-b1e4-f68da66a85a4",
+              "sourceStep": "/api/3/workflow_steps/6c14c8df-0dd1-4dce-8dc3-93a6a6762751",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "e6622ce7-c931-40cb-9953-5951620dbfb1"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "17ec87fe-f3d1-4a00-bf74-ceecb56ff3ec",
+          "id": 771,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "excel-tools"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Update Column",
+          "aliasName": null,
+          "tag": null,
+          "description": "Update column by name or position",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1696229222,
+          "collection": "/api/3/workflow_collections/d555edd3-0728-473d-abd3-4a7836730242",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/656d5477-20dc-46f2-b0d0-00dd8f2e8467",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Update Column",
+              "description": null,
+              "arguments": {
+                "name": "Excel Tools",
+                "params": {
+                  "cells": "[\"two_two\",\"two_tree\"]",
+                  "file_iri": "{{vars.input.records[0].file['@id']}}",
+                  "sheet_name": "Sheet1",
+                  "column_index": 2,
+                  "select_column": "Position",
+                  "first_row_index": 2
+                },
+                "version": "1.0.0",
+                "connector": "excel-tools",
+                "operation": "update_column",
+                "operationTitle": "Update Column",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "59c5bad4-0f0a-4c15-a1d3-5951a2d51f95"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "fa2e45c7-2f83-4037-8363-a211bbf24c7b",
+                "resources": [
+                  "attachments",
+                  "files"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "displayConditions": {
+                  "files": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": []
+                  },
+                  "attachments": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": []
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": false,
+                "showToasterMessage": {
+                  "visible": false,
+                  "messageVisible": true
+                },
+                "singleRecordExecution": true
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "656d5477-20dc-46f2-b0d0-00dd8f2e8467"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> List Sheets",
+              "targetStep": "/api/3/workflow_steps/59c5bad4-0f0a-4c15-a1d3-5951a2d51f95",
+              "sourceStep": "/api/3/workflow_steps/656d5477-20dc-46f2-b0d0-00dd8f2e8467",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "1749d3e6-07a5-4c1e-8ea8-2bdfa387f210"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "377137bb-ffe6-425a-bce6-c8bf462c11c6",
+          "id": 775,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "excel-tools"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Read Sheet",
+          "aliasName": null,
+          "tag": null,
+          "description": "lists the sheets available in an excel file by name",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1695963261,
+          "collection": "/api/3/workflow_collections/d555edd3-0728-473d-abd3-4a7836730242",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/d07c8234-0e80-4bc0-84e8-94a3fe68ac2c",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Read Sheet",
+              "description": null,
+              "arguments": {
+                "name": "Excel Tools",
+                "params": {
+                  "file_iri": "{{vars.input.records[0].file['@id']}}",
+                  "sheet_name": "Sheet1",
+                  "column_title": true,
+                  "use_column_title": false
+                },
+                "version": "1.0.0",
+                "connector": "excel-tools",
+                "operation": "read_sheet",
+                "operationTitle": "Read Sheet",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "007b67e3-b4ca-4312-9f29-78b6af035ffb"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "98daaa8e-259c-45ec-940b-de24d5618c13",
+                "resources": [
+                  "attachments",
+                  "files"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "displayConditions": {
+                  "files": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": []
+                  },
+                  "attachments": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": []
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": false,
+                "showToasterMessage": {
+                  "visible": false,
+                  "messageVisible": true
+                },
+                "singleRecordExecution": true
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "d07c8234-0e80-4bc0-84e8-94a3fe68ac2c"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> List Sheets",
+              "targetStep": "/api/3/workflow_steps/007b67e3-b4ca-4312-9f29-78b6af035ffb",
+              "sourceStep": "/api/3/workflow_steps/d07c8234-0e80-4bc0-84e8-94a3fe68ac2c",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "24537147-2590-43bc-930a-e4c31e97f1d9"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "71b31b04-a08e-43cb-b0c9-0a856837fb8a",
+          "id": 772,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "excel-tools"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Update Cell",
+          "aliasName": null,
+          "tag": null,
+          "description": "Update a specific cell with a new value",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1695963406,
+          "collection": "/api/3/workflow_collections/d555edd3-0728-473d-abd3-4a7836730242",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/a3a9cb55-9682-4f56-8336-27d0e8ba77fe",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Update Cell",
+              "description": null,
+              "arguments": {
+                "name": "Excel Tools",
+                "params": {
+                  "cell_id": "U2",
+                  "file_iri": "{{vars.input.records[0].file['@id']}}",
+                  "cell_value": "Resolved",
+                  "sheet_name": "Sheet1"
+                },
+                "version": "1.0.0",
+                "connector": "excel-tools",
+                "operation": "update_cell",
+                "operationTitle": "Update Cell",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "23654ee2-51ad-4a92-ba55-afc0a9315e06"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "c5124394-93d0-42e2-8438-6ef1aedb6d7d",
+                "resources": [
+                  "attachments",
+                  "files"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "displayConditions": {
+                  "files": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": []
+                  },
+                  "attachments": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": []
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": false,
+                "showToasterMessage": {
+                  "visible": false,
+                  "messageVisible": true
+                },
+                "singleRecordExecution": true
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "a3a9cb55-9682-4f56-8336-27d0e8ba77fe"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> List Sheets",
+              "targetStep": "/api/3/workflow_steps/23654ee2-51ad-4a92-ba55-afc0a9315e06",
+              "sourceStep": "/api/3/workflow_steps/a3a9cb55-9682-4f56-8336-27d0e8ba77fe",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "22a8e02c-3c54-4cdc-877e-f882886de1c0"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "a5ce61b0-cada-4e13-a762-a3a56fa0d1dd",
+          "id": 773,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "excel-tools"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "List Sheet Names",
+          "aliasName": null,
+          "tag": null,
+          "description": "List sheet names of an Excel file",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1695963283,
+          "collection": "/api/3/workflow_collections/d555edd3-0728-473d-abd3-4a7836730242",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/b5b918cc-dea7-4e93-b12b-dba6ffe625b5",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "List Sheets",
+              "description": null,
+              "arguments": {
+                "name": "Excel Tools",
+                "params": {
+                  "file_iri": "{{vars.input.records[0]['@id'] or vars.input.records[0]['@id']}}"
+                },
+                "version": "1.0.0",
+                "connector": "excel-tools",
+                "operation": "list_sheets",
+                "operationTitle": "List Sheets",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "4bffe866-5458-4e53-afa5-a273a9485575"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "0edae814-7ce3-471f-a5eb-64d8d66225ac",
+                "resources": [
+                  "attachments",
+                  "files"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "displayConditions": {
+                  "files": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": []
+                  },
+                  "attachments": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": []
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": false,
+                "showToasterMessage": {
+                  "visible": false,
+                  "messageVisible": true
+                },
+                "singleRecordExecution": true
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "b5b918cc-dea7-4e93-b12b-dba6ffe625b5"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> List Sheets",
+              "targetStep": "/api/3/workflow_steps/4bffe866-5458-4e53-afa5-a273a9485575",
+              "sourceStep": "/api/3/workflow_steps/b5b918cc-dea7-4e93-b12b-dba6ffe625b5",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "abb221de-2bda-474b-8320-fcd7fa810561"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "ca139584-6e8a-49b9-91e0-b8153cb70332",
+          "id": 774,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "excel-tools"
+          ]
+        }
+      ]
+    }
+  ],
+  "exported_tags": [
+    "excel-tools"
+  ]
+}
