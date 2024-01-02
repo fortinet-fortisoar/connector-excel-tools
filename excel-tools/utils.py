@@ -1,3 +1,10 @@
+"""
+Copyright start
+MIT License
+Copyright (c) 2023 Fortinet Inc
+Copyright end
+"""
+
 import os
 import openpyxl
 from connectors.core.connector import get_logger, ConnectorError

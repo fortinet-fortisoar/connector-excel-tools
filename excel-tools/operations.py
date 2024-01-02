@@ -1,3 +1,10 @@
+"""
+Copyright start
+MIT License
+Copyright (c) 2023 Fortinet Inc
+Copyright end
+"""
+
 import re
 from connectors.core.connector import ConnectorError
 from .utils import *
