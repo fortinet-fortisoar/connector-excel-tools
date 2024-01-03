@@ -1,240 +1,139 @@
-## About the connector
-Security Scorecard Platform combines several threat intelligence sources to provide in-depth insights on threat hosts and attack infrastructure.This connector facilitates automated operations to pull off real-time host configuration analysis to come up with actionable threat intelligence that is vital in detection, mitigation, and remediation.
-<p>This document provides information about the Security Scorecard Connector, which facilitates automated interactions, with a Security Scorecard server using FortiSOAR&trade; playbooks. Add the Security Scorecard Connector as a step in FortiSOAR&trade; playbooks and perform automated operations with Security Scorecard.</p>
 
-### Version information
+<h2>About the connector</h2>
 
-Connector Version: 1.0.0
+<p>Utility to manage excel files</p>
 
+<p>This document provides information about the Excel Tools Connector, which facilitates automated interactions, with a Excel Tools server using FortiSOAR&trade; playbooks. Add the Excel Tools Connector as a step in FortiSOAR&trade; playbooks and perform automated operations with Excel Tools.</p>
 
-Authored By: spryIQ.co
+<h3>Version information</h3>
 
-Contributors: Swapnil Koulgikar
+<p>Connector Version: 1.0.0</p>
 
-Certified: No
-## Installing the connector
-<p>From FortiSOAR&trade; 5.0.0 onwards, use the <strong>Connector Store</strong> to install the connector. For the detailed procedure to install a connector, click <a href="https://docs.fortinet.com/document/fortisoar/0.0.0/installing-a-connector/1/installing-a-connector" target="_top">here</a>.<br>You can also use the following <code>yum</code> command as a root user to install connectors from an SSH session:</p>
-`yum install cyops-connector-security-scorecard`
+<p>Authored By: Fortinet CSE</p>
 
-## Prerequisites to configuring the connector
-- You must have the URL of Security Scorecard server to which you will connect and perform automated operations and credentials to access that server.
-- The FortiSOAR&trade; server should have outbound connectivity to port 443 on the Security Scorecard server.
+<p>Contributors: Naili Mahdi</p>
 
-## Minimum Permissions Required
-- N/A
+<p>Certified: No</p>
 
-## Configuring the connector
-For the procedure to configure a connector, click [here](https://docs.fortinet.com/document/fortisoar/0.0.0/configuring-a-connector/1/configuring-a-connector)
-### Configuration parameters
-<p>In FortiSOAR&trade;, on the Connectors page, click the <strong>Security Scorecard</strong> connector row (if you are in the <strong>Grid</strong> view on the Connectors page) and in the <strong>Configurations&nbsp;</strong> tab enter the required configuration details:&nbsp;</p>
-<table border=1><thead><tr><th>Parameter<br></th><th>Description<br></th></tr></thead><tbody><tr><td>Server URL<br></td><td>Specify the URL of the security scorecard server to connect and perform automated operations.<br>
-<tr><td>API key<br></td><td>Specify the API key to access the endpoint to which you will connect and perform the automated operations.<br>
+<h2>Installing the connector</h2>
+
+<p>Use the <strong>Content Hub</strong> to install the connector. For the detailed procedure to install a connector, click <a href="https://docs.fortinet.com/document/fortisoar/0.0.0/installing-a-connector/1/installing-a-connector" target="_top">here</a>.</p><p>You can also use the <code>yum</code> command as a root user to install the connector:</p>
+
+<pre>yum install cyops-connector-excel-tools</pre>
+
+<h2>Prerequisites to configuring the connector</h2>
+
+<p>There are no prerequisites to configuring this connector.</p>
+
+<h2>Minimum Permissions Required</h2>
+
+<ul>
+<li>Not applicable</li>
+</ul>
+
+<h2>Configuring the connector</h2>
+
+<p>For the procedure to configure a connector, click <a href="https://docs.fortinet.com/document/fortisoar/0.0.0/configuring-a-connector/1/configuring-a-connector">here</a></p>
+
+<h3>Configuration parameters</h3>
+
+<p>None.</p>
+
+<h2>Actions supported by the connector</h2>
+
+<p>The following automated operations can be included in playbooks and you can also use the annotations to access operations:</p>
+
+<table border=1><thead><tr><th>Function</th><th>Description</th><th>Annotation and Category</th></tr></thead><tbody><tr><td>Read Sheet</td><td>Read the sheet content by name and return all content as JSON</td><td>read_sheet <br/></td></tr>
+<tr><td>Read Column By Name</td><td>Read the column content by name</td><td>read_column_by_name <br/></td></tr>
+<tr><td>Update Column</td><td>Update cells values in a column</td><td>update_column <br/></td></tr>
+<tr><td>Update Cell</td><td>Update the value of a cell</td><td>update_cell <br/></td></tr>
+<tr><td>List Sheets</td><td>Lists available sheets names</td><td>list_sheets <br/></td></tr>
 </tbody></table>
 
-## Actions supported by the connector
-The following automated operations can be included in playbooks and you can also use the annotations to access operations from FortiSOAR&trade; release 4.10.0 and onwards:
-<table border=1><thead><tr><th>Function<br></th><th>Description<br></th><th>Annotation and Category<br></th></tr></thead><tbody><tr><td>Get All Companies Portfolio<br></td><td>Retrieves a list companies of from security scorecard.<br></td><td>get_all_companies_portfolio <br/>Investigation<br></td></tr>
-<tr><td>Get List of Portfolio<br></td><td>Retrieves a list portfolio of from security scorecard.<br></td><td>get_list_of_portfolio <br/>Investigation<br></td></tr>
-<tr><td>Get Company Score<br></td><td>Retrieve company overall score from security scorecard.<br></td><td>get_company_score <br/>Investigation<br></td></tr>
-<tr><td>Get Company Factor Score<br></td><td>Retrieve company factor score from security scorecard.<br></td><td>get_company_factor_score <br/>Investigation<br></td></tr>
-<tr><td>Get Company History Score<br></td><td>Retrieve company history score from security scorecard.<br></td><td>get_company_history_score <br/>Investigation<br></td></tr>
-<tr><td>Get Company History Factor Score<br></td><td>Retrieve company history factor score from security scorecard.<br></td><td>get_company_history_factor_score <br/>Investigation<br></td></tr>
-<tr><td>Get Alert List<br></td><td>Retrieve list alerts triggered from security scorecard.<br></td><td>get_alert_list <br/>Investigation<br></td></tr>
-<tr><td>Get Ransomware Details  <br></td><td>Retrieve ransomware details triggered from security scorecard.<br></td><td>get_ransomware_details <br/>Investigation<br></td></tr>
-</tbody></table>
+<h3>operation: Read Sheet</h3>
 
-### operation: Get All Companies Portfolio
-#### Input parameters
-<table border=1><thead><tr><th>Parameter<br></th><th>Description<br></th></tr></thead><tbody><tr><td>Portfolio ID<br></td><td>Specify the portfolio unique id retrieve.<br>
+<h4>Input parameters</h4>
+
+<table border=1><thead><tr><th>Parameter</th><th>Description</th></tr></thead><tbody><tr><td>File IRI</td><td>IRI of the excel file to read
+</td></tr><tr><td>Sheet Name</td><td>Name of the sheet to read
+</td></tr><tr><td>Use Column Title</td><td>Use the column title as a key for each cell value on that column instead of the cell coordinates. The sheet must have a title row on the top
 </td></tr></tbody></table>
 
-#### Output
-The output contains the following populated JSON schema:
-<code><br>{
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;    "SecurityScorecard": {
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        "Portfolio": {
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;            "Company": {
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                "domain": "",
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                "grade": "",
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                "grade_url": "",
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                "industry": "",
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                "is_custom_vendor": "",
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                "last30days_score_change": "",
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                "name": "",
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                "score": "",
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                "size": ""
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;            }
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        }
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;    }
-</code><code><br>}</code>
+<h4>Output</h4>
 
-### operation: Get List of Portfolio
-#### Input parameters
-None.
+<p>The output contains the following populated JSON schema:</p>
 
-#### Output
-The output contains the following populated JSON schema:
-<code><br>{
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;    "id": "",
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;    "name": "",
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;    "privacy": "",
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;    "read_only": "",
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;    "created_at": "",
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;    "is_public": ""
-</code><code><br>}</code>
+<p>The output contains a non-dictionary value.</p>
 
-### operation: Get Company Score
-#### Input parameters
-<table border=1><thead><tr><th>Parameter<br></th><th>Description<br></th></tr></thead><tbody><tr><td>Domain<br></td><td>Specify the domain of a company in SecurityScorecard.<br>
+<h3>operation: Read Column By Name</h3>
+
+<h4>Input parameters</h4>
+
+<table border=1><thead><tr><th>Parameter</th><th>Description</th></tr></thead><tbody><tr><td>File IRI</td><td>IRI of the excel file to edit
+</td></tr><tr><td>Sheet Name</td><td>Name of the sheet to edit
+</td></tr><tr><td>Column Name</td><td>Name of the column you want to read.
 </td></tr></tbody></table>
 
-#### Output
-The output contains the following populated JSON schema:
-<code><br>{
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;    "SecurityScorecard": {
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        "Company": {
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;            "Score": {
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                "created_at": "",
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                "domain": "",
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                "grade": "",
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                "grade_url": "",
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                "industry": "",
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                "last30day_score_change": "",
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                "name": "",
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                "score": "",
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                "size": "",
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                "tags": []
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;            }
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        }
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;    }
-</code><code><br>}</code>
+<h4>Output</h4>
 
-### operation: Get Company Factor Score
-#### Input parameters
-<table border=1><thead><tr><th>Parameter<br></th><th>Description<br></th></tr></thead><tbody><tr><td>Domain<br></td><td>Specify the domain of a company in Security Scorecard.<br>
+<p>The output contains the following populated JSON schema:</p>
+
+<p>The output contains a non-dictionary value.</p>
+
+<h3>operation: Update Column</h3>
+
+<h4>Input parameters</h4>
+
+<table border=1><thead><tr><th>Parameter</th><th>Description</th></tr></thead><tbody><tr><td>File IRI</td><td>IRI of the excel file to edit
+</td></tr><tr><td>Sheet Name</td><td>Name of the sheet to edit
+</td></tr><tr><td>Select Column By</td><td>Select column by name or position
+<br><strong>If you choose 'Name'</strong><ul><li>Cells Definitions: Cells definition JSON dictionary</li></ul><strong>If you choose 'Position'</strong><ul><li>Column Index: Index of the column to update</li><li>First Row Index: Index of the first row to update</li><li>Cells Values: CSV or list of the values to update the column with</li></ul></td></tr></tbody></table>
+
+<h4>Output</h4>
+
+<p>The output contains the following populated JSON schema:</p>
+
+<p>The output contains a non-dictionary value.</p>
+
+<h3>operation: Update Cell</h3>
+
+<h4>Input parameters</h4>
+
+<table border=1><thead><tr><th>Parameter</th><th>Description</th></tr></thead><tbody><tr><td>File IRI</td><td>IRI of the excel file to edit
+</td></tr><tr><td>Sheet Name</td><td>Name of the sheet to edit
+</td></tr><tr><td>Cell ID</td><td>Cell to edit,exp: A1, B3...
+</td></tr><tr><td>Value</td><td>Value to update the cell with
 </td></tr></tbody></table>
 
-#### Output
-The output contains the following populated JSON schema:
-<code><br>{
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;    "SecurityScorecard": {
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        "Company": {
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;            "Factor": [
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                {
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                    "grade": "",
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                    "grade_url": "",
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                    "issue_summary": [
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                        {
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                            "count": "",
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                            "detail_url": "",
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                            "severity": "",
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                            "total_score_impact": "",
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                            "type": ""
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                        }
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                    ],
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                    "name": "",
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                    "score": ""
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                }
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;            ]
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        }
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;    }
-</code><code><br>}</code>
+<h4>Output</h4>
 
-### operation: Get Company History Score
-#### Input parameters
-<table border=1><thead><tr><th>Parameter<br></th><th>Description<br></th></tr></thead><tbody><tr><td>Domain<br></td><td>Specify the domain of a company in SecurityScorecard.<br>
+<p>The output contains the following populated JSON schema:</p>
+
+<p>The output contains a non-dictionary value.</p>
+
+<h3>operation: List Sheets</h3>
+
+<h4>Input parameters</h4>
+
+<table border=1><thead><tr><th>Parameter</th><th>Description</th></tr></thead><tbody><tr><td>File IRI</td><td>IRI of the excel file
 </td></tr></tbody></table>
 
-#### Output
-The output contains the following populated JSON schema:
-<code><br>{
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;    "SecurityScorecard": {
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        "Company": {
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;            "ScoreHistory": [
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                {
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                    "date": "",
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                    "domain": "",
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                    "score": ""
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                }
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;            ]
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        }
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;    }
-</code><code><br>}</code>
+<h4>Output</h4>
 
-### operation: Get Company History Factor Score
-#### Input parameters
-<table border=1><thead><tr><th>Parameter<br></th><th>Description<br></th></tr></thead><tbody><tr><td>Domain<br></td><td>Specify the domain of a company in SecurityScorecard.<br>
-</td></tr></tbody></table>
+<p>The output contains the following populated JSON schema:</p>
 
-#### Output
-The output contains the following populated JSON schema:
-<code><br>{
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;    "SecurityScorecard": {
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        "Company": {
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;            "ScoreHistory": [
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                {
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                    "date": "",
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                    "domain": "",
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                    "score": ""
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                }
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;            ]
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        }
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;    }
-</code><code><br>}</code>
+<p>The output contains a non-dictionary value.</p>
 
-### operation: Get Alert List
-#### Input parameters
-<table border=1><thead><tr><th>Parameter<br></th><th>Description<br></th></tr></thead><tbody><tr><td>Email ID<br></td><td>Specify the user email id in SecurityScorecard.<br>
-</td></tr></tbody></table>
+<h2>Included playbooks</h2>
 
-#### Output
-The output contains the following populated JSON schema:
-<code><br>{
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;    "entries": [],
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;    "page": "",
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;    "size": "",
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;    "sizes_by_category": {
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        "standard": {
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;            "total": "",
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;            "unread": ""
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        },
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        "prioritized": {
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;            "total": "",
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;            "unread": ""
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        },
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        "customer_contacts": {
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;            "total": "",
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;            "unread": ""
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        },
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        "queued": {
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;            "total": "",
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;            "unread": ""
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        }
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;    }
-</code><code><br>}</code>
+<p>The <code>Sample - excel-tools - 1.0.0</code> playbook collection comes bundled with the Excel Tools connector. These playbooks contain steps using which you can perform all supported actions. You can see bundled playbooks in the <strong>Automation</strong> &gt; <strong>Playbooks</strong> section in FortiSOAR&trade; after importing the Excel Tools connector.</p>
 
-### operation: Get Ransomware Details  
-#### Input parameters
-<table border=1><thead><tr><th>Parameter<br></th><th>Description<br></th></tr></thead><tbody><tr><td>Ransomware ID<br></td><td>Specify the user ransomware id in SecurityScorecard.<br>
-</td></tr></tbody></table>
+<ul>
+<li>List Sheet Names</li>
+<li>Read Column By Name</li>
+<li>Read Sheet</li>
+<li>Update Cell</li>
+<li>Update Column</li>
+</ul>
 
-#### Output
-The output contains the following populated JSON schema:
-<code><br>{
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;    "date": "",
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;    "domain": "",
-</code><code><br>&nbsp;&nbsp;&nbsp;&nbsp;    "score": ""
-</code><code><br>}</code>
-## Included playbooks
-The `Sample - security-scorecard - 1.0.0` playbook collection comes bundled with the Security Scorecard connector. These playbooks contain steps using which you can perform all supported actions. You can see bundled playbooks in the **Automation** > **Playbooks** section in FortiSOAR<sup>TM</sup> after importing the Security Scorecard connector.
-
-- Get Alert List
-- Get All Companies Portfolio
-- Get Company Factor Score
-- Get Company History Factor Score
-- Get Company History Score
-- Get Company Score
-- Get List of Portfolio
-- Get Ransomware Details  
-
-**Note**: If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection, since the sample playbook collection gets deleted during connector upgrade and delete.
+<p><strong>Note</strong>: If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection since the sample playbook collection gets deleted during connector upgrade and delete.</p>
