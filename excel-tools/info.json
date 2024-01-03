@@ -51,7 +51,36 @@
           "value": false
         }
       ],
-      "output_schema": "",
+      "output_schema": [
+        {
+          "A1": "",
+          "B1": "",
+          "C1": "",
+          "D1": "",
+          "E1": "",
+          "F1": "",
+          "G1": "",
+          "H1": "",
+          "I1": "",
+          "J1": "",
+          "K1": "",
+          "L1": "",
+          "M1": "",
+          "N1": "",
+          "O1": "",
+          "P1": "",
+          "Q1": "",
+          "R1": "",
+          "S1": "",
+          "T1": "",
+          "U1": "",
+          "V1": "",
+          "W1": "",
+          "X1": "",
+          "Y1": "",
+          "Z1": ""
+        }
+      ],
       "enabled": true
     },
     {
@@ -92,7 +121,7 @@
           "required": true
         }
       ],
-      "output_schema": "",
+      "output_schema": [],
       "enabled": true
     },
     {
@@ -192,7 +221,77 @@
           }
         }
       ],
-      "output_schema": "",
+      "output_schema": {
+        "fileIRI": "",
+        "response": {
+          "id": "",
+          "@id": "",
+          "cVEs": [],
+          "file": {
+            "id": "",
+            "@id": "",
+            "size": "",
+            "uuid": "",
+            "@type": "",
+            "assignee": "",
+            "filename": "",
+            "metadata": [],
+            "mimeType": "",
+            "thumbnail": "",
+            "uploadDate": ""
+          },
+          "name": "",
+          "type": "",
+          "uuid": "",
+          "@type": "",
+          "tasks": [],
+          "alerts": [],
+          "assets": [],
+          "owners": [],
+          "people": [],
+          "@context": "",
+          "assignee": "",
+          "comments": [],
+          "warrooms": [],
+          "incidents": [],
+          "createDate": "",
+          "createUser": {
+            "id": "",
+            "@id": "",
+            "name": "",
+            "uuid": "",
+            "@type": "",
+            "avatar": "",
+            "userId": "",
+            "userType": "",
+            "createDate": "",
+            "createUser": "",
+            "modifyDate": "",
+            "modifyUser": ""
+          },
+          "indicators": [],
+          "modifyDate": "",
+          "modifyUser": {
+            "id": "",
+            "@id": "",
+            "name": "",
+            "uuid": "",
+            "@type": "",
+            "avatar": "",
+            "userId": "",
+            "userType": "",
+            "createDate": "",
+            "createUser": "",
+            "modifyDate": "",
+            "modifyUser": ""
+          },
+          "recordTags": [],
+          "userOwners": [],
+          "workspaces": [],
+          "description": "",
+          "vulnerabilities": []
+        }
+      },
       "enabled": true
     },
     {
@@ -245,7 +344,77 @@
           "required": true
         }
       ],
-      "output_schema": "",
+      "output_schema":  {
+        "fileIRI": "",
+        "response": {
+          "id": "",
+          "@id": "",
+          "cVEs": [],
+          "file": {
+            "id": "",
+            "@id": "",
+            "size": "",
+            "uuid": "",
+            "@type": "",
+            "assignee": "",
+            "filename": "",
+            "metadata": [],
+            "mimeType": "",
+            "thumbnail": "",
+            "uploadDate": ""
+          },
+          "name": "",
+          "type": "",
+          "uuid": "",
+          "@type": "",
+          "tasks": [],
+          "alerts": [],
+          "assets": [],
+          "owners": [],
+          "people": [],
+          "@context": "",
+          "assignee": "",
+          "comments": [],
+          "warrooms": [],
+          "incidents": [],
+          "createDate": "",
+          "createUser": {
+            "id": "",
+            "@id": "",
+            "name": "",
+            "uuid": "",
+            "@type": "",
+            "avatar": "",
+            "userId": "",
+            "userType": "",
+            "createDate": "",
+            "createUser": "",
+            "modifyDate": "",
+            "modifyUser": ""
+          },
+          "indicators": [],
+          "modifyDate": "",
+          "modifyUser": {
+            "id": "",
+            "@id": "",
+            "name": "",
+            "uuid": "",
+            "@type": "",
+            "avatar": "",
+            "userId": "",
+            "userType": "",
+            "createDate": "",
+            "createUser": "",
+            "modifyDate": "",
+            "modifyUser": ""
+          },
+          "recordTags": [],
+          "userOwners": [],
+          "workspaces": [],
+          "description": "",
+          "vulnerabilities": []
+        }
+      },
       "enabled": true
     },
     {
@@ -266,7 +435,7 @@
           "required": true
         }
       ],
-      "output_schema": "",
+      "output_schema": [],
       "enabled": true
     }
   ]
