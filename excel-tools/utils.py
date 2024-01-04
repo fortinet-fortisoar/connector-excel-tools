@@ -1,3 +1,11 @@
+"""
+Copyright start
+MIT License
+Copyright (c) 2024 Fortinet Inc
+Copyright end
+"""
+
+import os
 import openpyxl
 from connectors.core.connector import get_logger, ConnectorError
 from connectors.cyops_utilities.builtins import download_file_from_cyops, upload_file_to_cyops
