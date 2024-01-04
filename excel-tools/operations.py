@@ -3,6 +3,7 @@ import re
 from connectors.core.connector import ConnectorError
 from .utils import *
 
+
 def read_sheet(config, params):
     json_data = []
     use_column_title = params.get('use_column_title', None)
@@ -11,10 +12,10 @@ def read_sheet(config, params):
         sheet = workbook['sheet']
         rows = sheet.max_row
         columns = sheet.max_column
-        
-        for i in range(1, rows+1):
+
+        for i in range(1, rows + 1):
             row = {}
-            for j in range(1, columns+1):
+            for j in range(1, columns + 1):
                 if use_column_title:
                     if i == 1:
                         continue
@@ -46,7 +47,7 @@ def list_sheets(config, params):
         sheet_names = workbook['workbook'].sheetnames
         cleanup(workbook)
         return sheet_names
-    
+
     except Exception as err:
         logger.exception('List Sheets Error: {0}'.format(err))
         raise ConnectorError('List Sheets Error: {0}'.format(err))
@@ -58,13 +59,13 @@ def read_column_by_name(config, params):
         workbook = load_workbook(params)
         sheet = workbook['sheet']
         column_name = params.get('column_name')
-        if re.match('^[A-Z]{1,2}$', column_name): # Matches a typical excel column letter(s)
-            column = [{entry.coordinate:entry.value} for entry in sheet[column_name]]
+        column = []
+        if re.match('^[A-Z]{1,2}$', column_name):  # Matches a typical excel column letter(s)
+            column = [{entry.coordinate: entry.value} for entry in sheet[column_name]]
         else:
-            headers = []
             for cell in sheet[1]:
                 if cell.value == column_name:
-                    column = [{entry.coordinate:entry.value} for entry in sheet[cell.coordinate[0]]]
+                    column = [{entry.coordinate: entry.value} for entry in sheet[cell.coordinate[0]]]
         cleanup(workbook)
         return column
 
@@ -78,7 +79,7 @@ def update_cell(config, params):
         cell_id = params.get('cell_id')
         cell_value = params.get('cell_value')
         workbook = load_workbook(params)
-        sheet = workbook['sheet']        
+        sheet = workbook['sheet']
         sheet[cell_id] = cell_value
         return upload_file_to_fortisoar(workbook)
 
@@ -91,21 +92,21 @@ def update_column(config, params):
     try:
         select_column_by = params.get('select_column')
         coordinates_schema = {
-                "type": "object",
-                "propertyNames": {
-                    "pattern": "[A-Z]{1,2}\d+"
-                }
+            "type": "object",
+            "propertyNames": {
+                "pattern": "[A-Z]{1,2}\d+"
+            }
         }
-        
+
         workbook = load_workbook(params)
         sheet = workbook['sheet']
-        
+
         if select_column_by == 'Name':
             cells = validate_json_schema(params.get('cells'), coordinates_schema)
-            for coordinate, value in cells.items():   
+            for coordinate, value in cells.items():
                 sheet[coordinate] = value
             return upload_file_to_fortisoar(workbook)
-        
+
         elif select_column_by == 'Position':
             column_index = params.get('column_index')
             first_row_index = params.get('first_row_index')
@@ -118,7 +119,7 @@ def update_column(config, params):
     except Exception as err:
         logger.exception('Could not update column: {}'.format(err))
         raise ConnectorError('Could not update column: {}'.format(err))
-    
+
 
 def check_health(config):
     try:
